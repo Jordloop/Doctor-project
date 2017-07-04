@@ -1,26 +1,12 @@
-const sayHi = require('./../js/doctor.js').sayHiModule;
+var SearchDoctors = require('./../js/doctor.js').doctorModule;
+var newDoctor = new SearchDoctors();
 
-$(() => {
-  $('#symptom-form').submit((event) => {
-    console.log('hello');
+$(document).ready(function(symptom){
+  $('#symptom-form').submit(function(event){
     event.preventDefault();
-    const name = $("#symptom").val();
-    $("#output").text(sayHi(name));
+
+    var symptom = $('#symptom').val();
+    console.log(newDoctor.getDoctors(symptom));
+
   });
 });
-
-
-
-
-
-
-
-// var Doctor = require('./../js/doctor.js').doctorModule;
-// var newDoctor = new Doctor();
-//
-// $(document).ready(function(symptom){
-//
-//
-//     // $('#doctor-search').submit(function(event){
-//     //   event.preventDefault();
-// });
