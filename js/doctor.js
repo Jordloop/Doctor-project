@@ -7,7 +7,6 @@ function Doctor(id, first_name, last_name, image_url, bio){
   this.image_url = image_url;
   this.bio = bio;
 }
-
 //Sends request to API. Depending on result of request one of two callback functions is executed.
 Doctor.prototype.getDoctors = function(medicalIssue, successFunction, failFunction) {
   $.get('https://api.betterdoctor.com/2016-03-01/doctors?query='+ medicalIssue+'&location=45.5231%2C-122.6765%2C%205&user_location=45.5231%2C-122.6765&skip=0&limit=20&user_key=' + apiKey)
