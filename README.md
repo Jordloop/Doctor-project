@@ -18,6 +18,8 @@ User enters a symptom and a list of nearby doctors that are qualified to treat i
 
 ## Setup/Installation Requirements
 
+### Obtaining Repository
+
 * Open you computer's terminal and navigate to desktop.
 * While located in desktop execute the following command in the terminal:
   <pre>git clone https://github.com/Jordloop/Doctor-project.git</pre>
@@ -25,6 +27,20 @@ User enters a symptom and a list of nearby doctors that are qualified to treat i
 * While in the top level of the cloned repository's directory execute the following two commands:
   <pre>bower install</pre>
   <pre>npm install</pre>
+<hr>
+
+## Obtaining and applying API key
+
+* Visit the following site:
+<pre>https://developer.betterdoctor.com/</pre>
+* Click "Get a free API key".
+* Fill out the form.
+* Navigate to My Account > Applications and copy your API key.
+* In the top level of the directory create a file called ".env".
+* Open .env and paste the following code (placing your own api key where prompted):
+<pre>exports.apiKey = "YOUR-API-KEY-GOES-HERE";
+</pre>
+
 * Finally open index.html in any modern browser.
 
 
