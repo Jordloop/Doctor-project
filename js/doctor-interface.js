@@ -1,13 +1,13 @@
-// const sayHi = require('./../js/doctor.js').sayHiModule;
-//
-// $(() => {
-//   $('#name-form').submit((event) => {
-//     console.log('hello');
-//     event.preventDefault();
-//     const name = $("#input").val();
-//     $("#output").text(sayHi(name));
-//   });
-// });
+const sayHi = require('./../js/doctor.js').sayHiModule;
+
+$(() => {
+  $('#symptom-form').submit((event) => {
+    console.log('hello');
+    event.preventDefault();
+    const name = $("#symptom").val();
+    $("#output").text(sayHi(name));
+  });
+});
 
 
 

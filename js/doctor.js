@@ -1,6 +1,6 @@
-// const sayHi = (name) => `Hello ${name}`;
-//
-// exports.sayHiModule = sayHi;
+const sayHi = (name) => `Hello ${name}`;
+
+exports.sayHiModule = sayHi;
 
 
 
