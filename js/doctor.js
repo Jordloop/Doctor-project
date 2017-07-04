@@ -7,7 +7,7 @@ function Doctor(id, first_name, last_name, image_url){
   this.img_url = image_url;
 }
 
-Doctor.prototype.getDoctors = function(medicalIssue, displayDoctors) {
+Doctor.prototype.getDoctors = function(medicalIssue, display) {
   $.get('https://api.betterdoctor.com/2016-03-01/doctors?query='+ medicalIssue+'&location=45.5231%2C-122.6765%2C%205&user_location=45.5231%2C-122.6765&skip=0&limit=20&user_key=' + apiKey)
    .then(function(result) {
 
@@ -18,10 +18,9 @@ Doctor.prototype.getDoctors = function(medicalIssue, displayDoctors) {
         let newDoctor = new Doctor(i + 1, first, last, image);
 
         console.log(newDoctor);
-        displayDoctors(first, last, image);
+        display(first, last, image);
 
       }
-      return allDoctors;
     })
    .fail(function(error){
       console.log("fail");

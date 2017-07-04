@@ -1,7 +1,7 @@
 const Doctor = require('./../js/doctor.js').doctorModule;
 
 const displayDoctors = function(first_name, last_name, image_url) {
-  $("output").append(`<div class="row">
+  $("#output").append(`<div class="row">
                         <div class="col-sm-6 col-md-4">
                           <div class="thumbnail">
                             <img src="${image_url}" alt="Doctor's image">
