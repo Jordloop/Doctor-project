@@ -1,27 +1,36 @@
 const apiKey = require('./../.env').apiKey;
 
-function Doctor(id, first_name, last_name, image_url, bio){
+function Doctor(id, first_name, last_name, image_url) {
   this.id = id;
   this.first_name = first_name;
   this.last_name = last_name;
   this.image_url = image_url;
-  this.bio = bio;
 }
+
+function Address(city, state, street, zip) {
+  this.city = city;
+  this.state = state;
+  this.street = street;
+  this.zip = zip;
+}
+
 //Sends request to API. Depending on result of request one of two callback functions is executed.
 Doctor.prototype.getDoctors = function(medicalIssue, successFunction, failFunction) {
   $.get('https://api.betterdoctor.com/2016-03-01/doctors?query='+ medicalIssue+'&location=45.5231%2C-122.6765%2C%205&user_location=45.5231%2C-122.6765&skip=0&limit=20&user_key=' + apiKey)
    .then(function(result) {
+     console.log(result.data);
      if (result.data.length === 0) {
        failFunction(medicalIssue);
      }
      else {
         for (let i = 0; i < result.data.length; i++) {
-          let first = result.data[i].profile.first_name;
-          let last = result.data[i].profile.last_name;
-          let image = result.data[i].profile.image_url;
-          let bio = result.data[i].profile.bio;
-          let newDoctor = new Doctor(i + 1, first, last, image, bio);
-          successFunction(newDoctor);
+          let newDoctor = new Doctor(i + 1, result.data[i].profile.first_name, result.data[i].profile.last_name, result.data[i].profile.image_url);
+
+          let newDoctorAddress = new Address (result.data[i].practices[0].visit_address.city, result.data[i].practices[0].visit_address.state, result.data[i].practices[0].visit_address.street, result.data[i].practices[0].visit_address.zip);
+
+          console.log(newDoctorAddress);
+
+          successFunction(newDoctor, newDoctorAddress);
         }
       }
     })

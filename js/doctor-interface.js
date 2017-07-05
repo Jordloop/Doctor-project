@@ -1,15 +1,15 @@
 const Doctor = require('./../js/doctor.js').doctorModule;
 
 //Called if API request was fruitful
-const displayDoctors = function(doctor) {
+const displayDoctors = function(doctor, address) {
   $("#output").append(`<div class="col-sm-12 col-md-12">
                         <div class="thumbnail">
                           <img src="${doctor.image_url}" alt="Doctor's image">
                           <div class="caption">
                             <h3>${doctor.first_name} ${doctor.last_name}</h3>
                             <hr>
-                            <h4>Bio:</h4>
-                            <p>${doctor.bio}</p>
+                            <h4>Address: </h4>
+                            <p>${address.street}, ${address.city}, ${address.state} ${address.zip}</p>
                           </div>
                         </div>
                       </div>`);
